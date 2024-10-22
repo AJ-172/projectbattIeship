@@ -3,9 +3,9 @@ package com.bptn.project;
 public class Ship {
 	private String name;
 	private int length;
-	private int hits; // Added to track hits
+	private int hits;
 	private boolean isSunk;
-	private boolean isHorizontal; // Added orientation
+	private boolean isHorizontal;
 
 	public Ship(String name, int length) {
 		this.name = name;
@@ -34,12 +34,11 @@ public class Ship {
 		return isSunk;
 	}
 
-	public void setSunk(boolean isSunk) {
-		this.isSunk = isSunk;
+	public boolean isHorizontal() {
+		return isHorizontal;
 	}
 
-	public boolean isHorizontal() {
-		// TODO Auto-generated method stub
-		return false;
+	public void setHorizontal(boolean isHorizontal) {
+		this.isHorizontal = isHorizontal;
 	}
 }

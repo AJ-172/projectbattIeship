@@ -1,7 +1,7 @@
 package com.bptn.project;
 
 public class Board {
-	private static final int GRID_SIZE = 10;
+	public static final int GRID_SIZE = 10;
 	private Cell[][] grid;
 
 	public Board() {
@@ -51,6 +51,10 @@ public class Board {
 		}
 		cell.setHit(true);
 		return cell.hasShip();
+	}
+
+	public boolean allShipsSunk() {
+		return false;
 	}
 
 	public Cell[][] getGrid() {
