@@ -12,7 +12,7 @@ public class Ship {
 		this.length = length;
 		this.hits = 0;
 		this.isSunk = false;
-		this.isHorizontal = true; // Default orientation
+		this.isHorizontal = true;
 	}
 
 	public void hit() {
