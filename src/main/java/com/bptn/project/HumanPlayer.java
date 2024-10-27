@@ -4,6 +4,7 @@ public class HumanPlayer extends Player {
 
 	public HumanPlayer() {
 		super();
+		initializeShips();
 	}
 
 	@Override
@@ -14,4 +15,12 @@ public class HumanPlayer extends Player {
 		ships.add(new Ship("Submarine", 3));
 	}
 
+	@Override
+	public void placeShips() {
+	}
+
+	@Override
+	public int[] generateAttackCoordinates() {
+		return null;
+	}
 }

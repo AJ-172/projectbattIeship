@@ -1,0 +1,49 @@
+Winner: Human
+Game Duration: 101 seconds
+Human Guesses: 48
+AI Guesses: 47
+----
+Winner: AI
+Game Duration: 40 seconds
+Human Guesses: 69
+Human Hits: 13
+Human Misses: 56
+Human Ships Sunk: 3
+AI Guesses: 69
+AI Hits: 15
+AI Misses: 54
+AI Ships Sunk: 4
+----
+Winner: AI
+Game Duration: 64 seconds
+Human Guesses: 79
+Human Hits: 11
+Human Misses: 68
+Human Ships Sunk: 3
+AI Guesses: 79
+AI Hits: 15
+AI Misses: 64
+AI Ships Sunk: 4
+----
+Winner: Human
+Game Duration: 33 seconds
+Human Guesses: 55
+Human Hits: 15
+Human Misses: 40
+Human Ships Sunk: 4
+AI Guesses: 54
+AI Hits: 11
+AI Misses: 43
+AI Ships Sunk: 2
+----
+Winner: Human
+Game Duration: 23 seconds
+Human Guesses: 44
+Human Hits: 15
+Human Misses: 29
+Human Ships Sunk: 4
+AI Guesses: 43
+AI Hits: 11
+AI Misses: 32
+AI Ships Sunk: 2
+----

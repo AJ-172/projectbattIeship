@@ -1,25 +1,27 @@
 package com.bptn.project;
 
 public class Ship {
+
 	private String name;
 	private int length;
 	private int hits;
-	private boolean isSunk;
 	private boolean isHorizontal;
+	private boolean isPlaced;
 
 	public Ship(String name, int length) {
 		this.name = name;
 		this.length = length;
 		this.hits = 0;
-		this.isSunk = false;
 		this.isHorizontal = true;
+		this.isPlaced = false;
 	}
 
 	public void hit() {
 		hits++;
-		if (hits >= length) {
-			isSunk = true;
-		}
+	}
+
+	public boolean isSunk() {
+		return hits >= length;
 	}
 
 	public String getName() {
@@ -30,8 +32,8 @@ public class Ship {
 		return length;
 	}
 
-	public boolean isSunk() {
-		return isSunk;
+	public int getHits() {
+		return hits;
 	}
 
 	public boolean isHorizontal() {
@@ -40,5 +42,13 @@ public class Ship {
 
 	public void setHorizontal(boolean isHorizontal) {
 		this.isHorizontal = isHorizontal;
+	}
+
+	public boolean isPlaced() {
+		return isPlaced;
+	}
+
+	public void setPlaced(boolean isPlaced) {
+		this.isPlaced = isPlaced;
 	}
 }

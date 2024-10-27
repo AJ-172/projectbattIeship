@@ -1,27 +1,32 @@
 package com.bptn.project;
 
 public class Cell {
-	private boolean hasShip;
+
 	private boolean isHit;
+	private Ship ship;
 
 	public Cell() {
-		this.hasShip = false;
 		this.isHit = false;
+		this.ship = null;
 	}
 
 	public boolean hasShip() {
-		return hasShip;
+		return ship != null;
 	}
 
-	public void setShip(boolean hasShip) {
-		this.hasShip = hasShip;
+	public void placeShip(Ship ship) {
+		this.ship = ship;
 	}
 
 	public boolean isHit() {
 		return isHit;
 	}
 
-	public void setHit(boolean isHit) {
-		this.isHit = isHit;
+	public void markHit() {
+		this.isHit = true;
+	}
+
+	public Ship getShip() {
+		return ship;
 	}
 }

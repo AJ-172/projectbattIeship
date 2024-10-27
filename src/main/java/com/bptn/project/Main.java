@@ -1,8 +1,10 @@
 package com.bptn.project;
 
+import javafx.application.Application;
+
 public class Main {
 
 	public static void main(String[] args) {
-		System.out.println("Welcome to Battleship!");
+		Application.launch(GameView.class, args);
 	}
 }

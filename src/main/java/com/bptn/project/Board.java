@@ -1,14 +1,15 @@
 package com.bptn.project;
 
 public class Board {
+
 	public static final int GRID_SIZE = 10;
 	private Cell[][] grid;
 
 	public Board() {
 		grid = new Cell[GRID_SIZE][GRID_SIZE];
-		for (int i = 0; i < GRID_SIZE; i++) {
-			for (int j = 0; j < GRID_SIZE; j++) {
-				grid[i][j] = new Cell();
+		for (int row = 0; row < GRID_SIZE; row++) {
+			for (int col = 0; col < GRID_SIZE; col++) {
+				grid[row][col] = new Cell();
 			}
 		}
 	}
@@ -38,9 +39,10 @@ public class Board {
 		for (int i = 0; i < length; i++) {
 			int currentRow = row + (isHorizontal ? 0 : i);
 			int currentCol = col + (isHorizontal ? i : 0);
-			grid[currentRow][currentCol].setShip(true);
+			grid[currentRow][currentCol].placeShip(ship);
 		}
 
+		ship.setPlaced(true);
 		return true;
 	}
 
@@ -49,12 +51,23 @@ public class Board {
 		if (cell.isHit()) {
 			return false;
 		}
-		cell.setHit(true);
-		return cell.hasShip();
+		cell.markHit();
+		if (cell.hasShip()) {
+			cell.getShip().hit();
+		}
+		return true;
 	}
 
 	public boolean allShipsSunk() {
-		return false;
+		for (int row = 0; row < GRID_SIZE; row++) {
+			for (int col = 0; col < GRID_SIZE; col++) {
+				Cell cell = grid[row][col];
+				if (cell.hasShip() && !cell.getShip().isSunk()) {
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 
 	public Cell[][] getGrid() {
