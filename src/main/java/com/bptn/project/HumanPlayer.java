@@ -1,5 +1,9 @@
 package com.bptn.project;
 
+/*
+Represents the human player in the Battleship game.
+Extends the Player class and handles ship initialization
+*/
 public class HumanPlayer extends Player {
 
 	public HumanPlayer() {
@@ -17,10 +21,11 @@ public class HumanPlayer extends Player {
 
 	@Override
 	public void placeShips() {
+		// Ship placement is handled via GUI in GameView
 	}
 
 	@Override
 	public int[] generateAttackCoordinates() {
-		return null;
+		return null; // Not used for human player
 	}
 }

@@ -4,11 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/*
+Represents the AI opponent in the Battleship game
+Extends the Player class and implements ship placement and attack logic
+*/
 public class AIPlayer extends Player {
 
-	private boolean[][] attackedPositions;
+	private boolean[][] attackedPositions; // Tracks positions already attacked
 	private Random randomGenerator;
-	private List<int[]> hitPositions;
+	private List<int[]> hitPositions; // Positions where a ship was hit
 
 	public AIPlayer() {
 		super();
@@ -37,6 +41,7 @@ public class AIPlayer extends Player {
 				ship.setHorizontal(isHorizontal);
 
 				placedSuccessfully = board.placeShip(ship, row, col);
+				// Retry until the ship is placed successfully
 			}
 		}
 	}
@@ -51,6 +56,7 @@ public class AIPlayer extends Player {
 				return coords;
 			}
 		}
+		// Randomly select a coordinate that hasn't been attacked yet
 		int row, col;
 		do {
 			row = randomGenerator.nextInt(Board.GRID_SIZE);
@@ -64,7 +70,7 @@ public class AIPlayer extends Player {
 		for (int[] hitPos : hitPositions) {
 			int row = hitPos[0];
 			int col = hitPos[1];
-			int[][] directions = { { -1, 0 }, { 1, 0 }, { 0, -1 }, { 0, 1 } };
+			int[][] directions = { { -1, 0 }, { 1, 0 }, { 0, -1 }, { 0, 1 } }; // Up, Down, Left, Right
 			for (int[] dir : directions) {
 				int newRow = row + dir[0];
 				int newCol = col + dir[1];
@@ -73,7 +79,7 @@ public class AIPlayer extends Player {
 				}
 			}
 		}
-		return null;
+		return null; // No valid adjacent coordinates found
 	}
 
 	private boolean isValidCoordinate(int row, int col) {

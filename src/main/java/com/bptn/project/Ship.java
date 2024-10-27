@@ -1,5 +1,9 @@
 package com.bptn.project;
 
+/*
+Represents a ship in the Battleship game
+Tracks the ship's name, length, hits received, orientation, and placement status
+*/
 public class Ship {
 
 	private String name;

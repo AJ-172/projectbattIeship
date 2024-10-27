@@ -4,6 +4,9 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/*
+Controls the game logic and interactions between the game model and the view
+*/
 public class GameController {
 
 	private GameView gameView;
@@ -24,6 +27,7 @@ public class GameController {
 	public void startGame() {
 		aiPlayer.placeShips();
 		startTime = System.currentTimeMillis();
+		// Human player's ships are placed via the GUI before this method is called
 	}
 
 	public void handlePlayerAttack(int row, int col) {
@@ -36,6 +40,7 @@ public class GameController {
 			gameView.updateOpponentBoard(aiPlayer.getBoard().getGrid());
 
 			if (aiPlayer.getBoard().getGrid()[row][col].hasShip()) {
+				// Player hit an AI's ship
 				humanPlayer.incrementHits();
 				Ship hitShip = aiPlayer.getBoard().getGrid()[row][col].getShip();
 				if (hitShip.isSunk()) {
@@ -45,21 +50,24 @@ public class GameController {
 					gameView.updateGameMessage("You hit the AI's ship!");
 				}
 			} else {
+				// Player missed
 				humanPlayer.incrementMisses();
 				gameView.updateGameMessage("You missed.");
 			}
 
+			// Update stats on the UI
 			gameView.updatePlayerStats(humanPlayer);
 			gameView.updateAIStats(aiPlayer);
 
+			// Check if the AI has any ships left
 			if (aiPlayer.allShipsSunk()) {
 				gameOver = true;
 				endTime = System.currentTimeMillis();
-				saveGameStatistics(true);
+				saveGameStatistics(true); // Player won
 				gameView.showAlert("You win!");
 				return;
 			}
-			aiTurn();
+			aiTurn(); // Proceed to the AI's turn
 		}
 	}
 
@@ -90,14 +98,16 @@ public class GameController {
 				gameView.updateGameMessage("AI missed.");
 			}
 
+			// Update the player's board and stats in the UI
 			gameView.updatePlayerBoard(humanPlayer.getBoard().getGrid());
 			gameView.updatePlayerStats(humanPlayer);
 			gameView.updateAIStats(aiPlayer);
 
+			// Check if the human player has any ships left
 			if (humanPlayer.allShipsSunk()) {
 				gameOver = true;
 				endTime = System.currentTimeMillis();
-				saveGameStatistics(false);
+				saveGameStatistics(false); // AI won
 				gameView.showAlert("AI wins!");
 			}
 		}
@@ -109,16 +119,16 @@ public class GameController {
 
 	public boolean placeHumanShip(int row, int col, boolean horizontal) {
 		if (currentShip == null) {
-			return false;
+			return false; // No ship is currently selected
 		}
 		currentShip.setHorizontal(horizontal);
 		boolean placed = humanPlayer.getBoard().placeShip(currentShip, row, col);
 		if (placed) {
 			currentShip.setPlaced(true);
-			currentShip = null;
+			currentShip = null; // Reset current ship after placement
 			return true;
 		} else {
-			return false;
+			return false; // Ship placement failed
 		}
 	}
 

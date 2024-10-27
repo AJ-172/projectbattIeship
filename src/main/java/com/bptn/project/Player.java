@@ -3,6 +3,10 @@ package com.bptn.project;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+Abstract class representing a player in the Battleship game
+Can be extended by HumanPlayer and AIPlayer
+*/
 public abstract class Player {
 
 	protected Board board;
@@ -34,7 +38,7 @@ public abstract class Player {
 	public boolean allShipsPlaced() {
 		for (Ship ship : ships) {
 			if (!ship.isPlaced()) {
-				return false;
+				return false; // At least one ship not placed
 			}
 		}
 		return true;
@@ -43,7 +47,7 @@ public abstract class Player {
 	public boolean allShipsSunk() {
 		for (Ship ship : ships) {
 			if (!ship.isSunk()) {
-				return false;
+				return false; // At least one ship not sunk
 			}
 		}
 		return true;

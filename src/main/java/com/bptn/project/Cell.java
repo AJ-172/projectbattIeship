@@ -1,5 +1,9 @@
 package com.bptn.project;
 
+/*
+Represents a single cell on the game board
+Tracks whether the cell has been hit and if it contains a ship
+*/
 public class Cell {
 
 	private boolean isHit;

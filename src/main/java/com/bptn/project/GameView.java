@@ -8,6 +8,9 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
+/*
+Handles the user interface of the Battleship game using JavaFX
+*/
 public class GameView extends Application {
 
 	private GameController gameController;
@@ -64,6 +67,7 @@ public class GameView extends Application {
 				shipButton.setOnAction(event -> {
 					selectedShip = ship;
 					gameController.setCurrentShip(ship);
+					// Highlight the selected ship button
 					for (javafx.scene.Node node : shipSelectionBox.getChildren()) {
 						if (node instanceof Button) {
 							node.setStyle(null);
@@ -160,10 +164,12 @@ public class GameView extends Application {
 		Label playerLabel = new Label("Your Board");
 		GridPane playerGrid = createPlayerGrid(false);
 
+		// Initialize stats labels
 		playerStatsLabel = new Label("Your Stats: ");
 		aiStatsLabel = new Label("AI Stats: ");
 		gameMessageLabel = new Label();
 
+		// Update stats display
 		updatePlayerStats(gameController.getHumanPlayer());
 		updateAIStats(gameController.getAIPlayer());
 
@@ -204,6 +210,7 @@ public class GameView extends Application {
 				grid.add(cellButton, col, row);
 			}
 		}
+
 		return grid;
 	}
 
